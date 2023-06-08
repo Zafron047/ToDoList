@@ -42,15 +42,23 @@ let showList = () => {
     taskNote.value = task.description;
 
     const edit = document.createElement('i');
-    edit.className = 'fa-solid fa-pen-to-square';
+    edit.className = 'fa-sharp fa-solid fa-pen-to-square fa-xl';
+    // <i class="fa-sharp fa-solid fa-pen-to-square fa-xl"></i>
 
     const remove = document.createElement('i');
-    remove.className = 'fa-solid fa-trash';
+    remove.className = 'fa-solid fa-trash fa-xl';
+{/* <i class="fa-solid fa-trash fa-xl"></i> */}
+
+    const hr = document.createElement('hr');
+    hr.className = 'hr';
 
     list.appendChild(taskContainer);
     taskContainer.appendChild(checkbox);
     taskContainer.appendChild(taskNote);
     taskContainer.appendChild(edit);
+    taskContainer.appendChild(remove);
+    list.appendChild(hr);
+
   });
 };
 showList();
