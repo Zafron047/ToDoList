@@ -3,9 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/f9ba107a19.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Wbpack Exercise</title>
   </head>
+
   <body>
-    <h1>Hello Borshon!</h1>
+    <div class="Container">
+      <h4>Today's To Do</h4>
+      <hr class="hr">
+      <input id="listInput" type="text" placeholder="Add to your list..." />
+      <hr class="hr">
+      <ul id="list" class="list-container">
+        <!-- <li><input type="checkbox">Task 1</li>
+        <li><input type="checkbox">Task 2</li>
+        <li><input type="checkbox">Task 3</li> -->
+      </ul>
+      <div class="footer">
+        <button id="clearAll" class="clearAll">
+          Clear all completed
+        </button>
+      </div>
+    </div>
   </body>
 </html>
