@@ -1,14 +1,14 @@
-import _ from 'lodash';
 import './style.css';
+// import _ from 'lodash';
 
 // let cloud = 'cloud';
-let array = JSON.parse(localStorage.getItem('Data')) || [];
+const array = JSON.parse(localStorage.getItem('Data')) || [];
 const listInput = document.querySelector('#listInput');
 let counter = 1;
 const list = document.querySelector('#list');
 
-const updateArray = (counter) => {
-  counter++;
+const updateArray = () => {
+  counter += 1;
   array.push({
     index: counter,
     description: listInput.value,
@@ -17,18 +17,9 @@ const updateArray = (counter) => {
   localStorage.setItem('Data', JSON.stringify(array));
 };
 
-listInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' && listInput.value) {
-    updateArray(listInput.value);
-    listInput.value = '';
-
-    showList();
-  }
-});
-
-let showList = () => {
+const showList = () => {
   list.innerHTML = '';
-  array.forEach((task, index) => {
+  array.forEach((task) => {
     const taskContainer = document.createElement('li');
     taskContainer.classList.add('taskContainer');
 
@@ -43,11 +34,9 @@ let showList = () => {
 
     const edit = document.createElement('i');
     edit.className = 'fa-sharp fa-solid fa-pen-to-square fa-xl';
-    // <i class="fa-sharp fa-solid fa-pen-to-square fa-xl"></i>
 
     const remove = document.createElement('i');
     remove.className = 'fa-solid fa-trash fa-xl';
-{/* <i class="fa-solid fa-trash fa-xl"></i> */}
 
     const hr = document.createElement('hr');
     hr.className = 'hr';
@@ -58,7 +47,16 @@ let showList = () => {
     taskContainer.appendChild(edit);
     taskContainer.appendChild(remove);
     list.appendChild(hr);
-
   });
 };
+
+listInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' && listInput.value) {
+    updateArray(listInput.value);
+    listInput.value = '';
+
+    showList();
+  }
+});
+
 showList();
