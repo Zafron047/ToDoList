@@ -20,8 +20,9 @@ h4 {
   font-size: 3vh;
   width: 90vw;
   height: 6vh;
-  background-color: #fff;
+  background-color: #ffffffa1;
   border-bottom: 1px solid;
+  color: rgba(0, 179, 255, 0.882);
 }
 
 .Container {
@@ -78,6 +79,13 @@ h4 {
   width: 4%;
   width: 2vw;
   height: 2vh;
+  cursor: pointer;
+}
+
+.removeBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .footer {
