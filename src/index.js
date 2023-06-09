@@ -1,10 +1,8 @@
 import './style.css';
-// import _ from 'lodash';
 
-// let cloud = 'cloud';
 const array = JSON.parse(localStorage.getItem('Data')) || [];
 const listInput = document.querySelector('#listInput');
-let counter = 1;
+let counter = 0;
 const list = document.querySelector('#list');
 
 const updateArray = () => {
