@@ -95,7 +95,7 @@ h4 {
   padding: 4%;
   width: 90vw;
   height: 6vh;
-  background-color: rgba(211, 211, 211, 0.638);
+  background-color: rgba(0, 179, 255, 0.882);
 }
 
 .clearAll {
@@ -104,6 +104,7 @@ h4 {
   background-color: transparent;
   height: 4vh;
   width: auto;
+  color: #fff;
 }
 
 .clearAll:hover {
