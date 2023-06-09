@@ -1,12 +1,12 @@
+import { forEach } from 'lodash';
 import './style.css';
 
-const array = JSON.parse(localStorage.getItem('Data')) || [];
+let array = JSON.parse(localStorage.getItem('Data')) || [];
 const listInput = document.querySelector('#listInput');
-let counter = 0;
+let counter = array.length+1;
 const list = document.querySelector('#list');
 
 const updateArray = () => {
-  counter += 1;
   array.push({
     index: counter,
     description: listInput.value,
@@ -14,6 +14,23 @@ const updateArray = () => {
   });
   localStorage.setItem('Data', JSON.stringify(array));
 };
+
+const editTaskNote = (task, newNote) => {
+  task.description = newNote || "";
+};
+
+
+const updateIndex = () => {
+  array.forEach((task, arrayIndex) => {
+    task.index = arrayIndex + 1;
+  });
+};
+
+const remove = (x) => {
+  array = array.filter((task) => task.index !== x);
+  updateIndex();
+  localStorage.setItem('Data', JSON.stringify(array));
+}
 
 const showList = () => {
   list.innerHTML = '';
@@ -29,12 +46,14 @@ const showList = () => {
     taskNote.type = 'text';
     taskNote.classList.add('taskNote');
     taskNote.value = task.description;
+    counter = task.index;
+    counter += 1;
 
-    const edit = document.createElement('i');
-    edit.className = 'fa-sharp fa-solid fa-pen-to-square fa-xl';
-
-    const remove = document.createElement('i');
-    remove.className = 'fa-solid fa-trash fa-xl';
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'removeBtn';
+    const removeIcon = document.createElement('i');
+    removeIcon.className = 'fa-solid fa-trash fa-xl';
+    removeBtn.appendChild(removeIcon);
 
     const hr = document.createElement('hr');
     hr.className = 'hr';
@@ -42,9 +61,20 @@ const showList = () => {
     list.appendChild(taskContainer);
     taskContainer.appendChild(checkbox);
     taskContainer.appendChild(taskNote);
-    taskContainer.appendChild(edit);
-    taskContainer.appendChild(remove);
+    taskContainer.appendChild(removeBtn);
     list.appendChild(hr);
+
+    removeBtn.addEventListener('click', () => {
+      remove(task.index);
+      showList();
+    });
+
+    taskNote.addEventListener('input', (event) => {
+      editTaskNote(task, event.target.value);
+      localStorage.setItem('Data', JSON.stringify(array));
+    });
+    
+    
   });
 };
 
