@@ -1,9 +1,8 @@
-import { forEach } from 'lodash';
 import './style.css';
 
 let array = JSON.parse(localStorage.getItem('Data')) || [];
 const listInput = document.querySelector('#listInput');
-let counter = array.length+1;
+let counter = array.length + 1;
 const list = document.querySelector('#list');
 
 const updateArray = () => {
@@ -16,9 +15,8 @@ const updateArray = () => {
 };
 
 const editTaskNote = (task, newNote) => {
-  task.description = newNote || "";
+  task.description = newNote || '';
 };
-
 
 const updateIndex = () => {
   array.forEach((task, arrayIndex) => {
@@ -30,7 +28,7 @@ const remove = (x) => {
   array = array.filter((task) => task.index !== x);
   updateIndex();
   localStorage.setItem('Data', JSON.stringify(array));
-}
+};
 
 const showList = () => {
   list.innerHTML = '';
@@ -73,14 +71,13 @@ const showList = () => {
       editTaskNote(task, event.target.value);
       localStorage.setItem('Data', JSON.stringify(array));
     });
-    
+
     taskNote.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === 'Escape') {
         event.preventDefault();
         event.target.blur();
       }
     });
-    
   });
 };
 
