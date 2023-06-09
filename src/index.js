@@ -33,8 +33,9 @@ const showList = () => {
     const edit = document.createElement('i');
     edit.className = 'fa-sharp fa-solid fa-pen-to-square fa-xl';
 
-    const remove = document.createElement('i');
-    remove.className = 'fa-solid fa-trash fa-xl';
+    const trash = document.createElement('i');
+    trash.id = 'trash';
+    trash.className = 'fa-solid fa-trash fa-xl';
 
     const hr = document.createElement('hr');
     hr.className = 'hr';
@@ -42,8 +43,8 @@ const showList = () => {
     list.appendChild(taskContainer);
     taskContainer.appendChild(checkbox);
     taskContainer.appendChild(taskNote);
-    taskContainer.appendChild(edit);
-    taskContainer.appendChild(remove);
+    // taskContainer.appendChild(edit);
+    taskContainer.appendChild(trash);
     list.appendChild(hr);
   });
 };
