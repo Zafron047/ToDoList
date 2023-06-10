@@ -1,6 +1,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import editTaskNote from './editTaskNote.js';
+import { trueStatus, falseStatus, clearCompleted } from './boolean.js';
 
 let array = JSON.parse(localStorage.getItem('Data')) || [];
 let counter = array.length + 1;
@@ -8,7 +9,7 @@ const list = document.querySelector('#list');
 
 const updateIndex = () => {
   array.forEach((task, arrayIndex) => {
-    task.index = arrayIndex + 1;
+    task.index = arrayIndex;
   });
 };
 
@@ -66,9 +67,20 @@ const showList = () => {
         event.target.blur();
       }
     });
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        trueStatus(task);
+      } else {
+        falseStatus(task);
+      }
+      localStorage.setItem('Data', JSON.stringify(array));
+    });
   });
 };
 
-export {
-  showList, editTaskNote, remove, array, counter,
-};
+clearAll.addEventListener('click', () => {
+  clearCompleted(array);
+});
+
+export { showList, editTaskNote, remove, array, counter, updateIndex };
