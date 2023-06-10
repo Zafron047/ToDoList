@@ -15,40 +15,6 @@ const updateArray = () => {
   localStorage.setItem('Data', JSON.stringify(array));
 };
 
-const showList = () => {
-  list.innerHTML = '';
-  array.forEach((task) => {
-    const taskContainer = document.createElement('li');
-    taskContainer.classList.add('taskContainer');
-
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('check');
-
-    const taskNote = document.createElement('input');
-    taskNote.type = 'text';
-    taskNote.classList.add('taskNote');
-    taskNote.value = task.description;
-
-    const edit = document.createElement('i');
-    edit.className = 'fa-sharp fa-solid fa-pen-to-square fa-xl';
-
-    const trash = document.createElement('i');
-    trash.id = 'trash';
-    trash.className = 'fa-solid fa-trash fa-xl';
-
-    const hr = document.createElement('hr');
-    hr.className = 'hr';
-
-    list.appendChild(taskContainer);
-    taskContainer.appendChild(checkbox);
-    taskContainer.appendChild(taskNote);
-    // taskContainer.appendChild(edit);
-    taskContainer.appendChild(trash);
-    list.appendChild(hr);
-  });
-};
-
 listInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' && listInput.value) {
     updateArray(listInput.value);
