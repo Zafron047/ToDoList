@@ -1,17 +1,18 @@
 /* eslint-disable import/no-mutable-exports */
 
 import editTaskNote from './editTaskNote.js';
-import { trueStatus, falseStatus, clearCompleted } from './boolean.js';
+import { trueStatus, falseStatus } from './boolean.js';
+import { updateIndex } from './updateIndex.js';
 
 let array = JSON.parse(localStorage.getItem('Data')) || [];
 let counter = array.length + 1;
 const list = document.querySelector('#list');
 
-const updateIndex = () => {
-  array.forEach((task, arrayIndex) => {
-    task.index = arrayIndex;
-  });
-};
+// const updateIndex = () => {
+//   array.forEach((task, arrayIndex) => {
+//     task.index = arrayIndex;
+//   });
+// };
 
 const remove = (x) => {
   array = array.filter((task) => task.index !== x);
@@ -79,8 +80,11 @@ const showList = () => {
   });
 };
 
-clearAll.addEventListener('click', () => {
-  clearCompleted(array);
-});
+// const clearAll = document.querySelector('#clearAll');
+// clearAll.addEventListener('click', () => {
+//   clearCompleted(array);
+// });
 
-export { showList, editTaskNote, remove, array, counter, updateIndex };
+export {
+  showList, editTaskNote, remove, array, counter,
+};

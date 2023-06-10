@@ -1,5 +1,6 @@
 import './style.css';
 import { showList, array, counter } from './modules/showList.js';
+import { clearCompleted } from './modules/boolean';
 
 const listInput = document.querySelector('#listInput');
 
@@ -19,6 +20,11 @@ listInput.addEventListener('keydown', (event) => {
 
     showList();
   }
+});
+
+const clearAll = document.querySelector('#clearAll');
+clearAll.addEventListener('click', () => {
+  clearCompleted(array);
 });
 
 showList();
