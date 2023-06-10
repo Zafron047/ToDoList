@@ -1,5 +1,3 @@
-import { array } from './showList.js';
-import { showList } from './showList.js';
 import { updateIndex } from './showList.js';
 
 const trueStatus = (task) => {
