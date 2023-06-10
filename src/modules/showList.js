@@ -1,6 +1,6 @@
 /* eslint-disable import/no-mutable-exports */
 
-import editTaskNote from "./editTaskNote";
+import editTaskNote from './editTaskNote.js';
 
 let array = JSON.parse(localStorage.getItem('Data')) || [];
 let counter = array.length + 1;
