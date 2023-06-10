@@ -9,11 +9,6 @@ const falseStatus = (task) => {
     task.completed = false;
 }
 
-// const clearCompleted = (bArray) => {
-//   const tempArray = bArray.filter((task) => !task.completed);
-//   localStorage.setItem('Data', JSON.stringify(bArray));
-// };
-
 const clearCompleted = (bArray) => {
   bArray = bArray.filter((task) => !task.completed);
   updateIndex();
