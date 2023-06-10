@@ -1,12 +1,9 @@
 import './style.css';
+import { showList, array, counter } from './modules/showList.js';
 
-const array = JSON.parse(localStorage.getItem('Data')) || [];
 const listInput = document.querySelector('#listInput');
-let counter = 0;
-const list = document.querySelector('#list');
 
 const updateArray = () => {
-  counter += 1;
   array.push({
     index: counter,
     description: listInput.value,
