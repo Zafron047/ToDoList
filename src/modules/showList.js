@@ -4,12 +4,11 @@ import editTaskNote from './editTaskNote.js';
 import { trueStatus, falseStatus } from './boolean.js';
 
 let array = JSON.parse(localStorage.getItem('Data')) || [];
-let counter = array.length + 1;
 const list = document.querySelector('#list');
 
 const updateIndex = () => {
   array.forEach((task, arrayIndex) => {
-    task.index = arrayIndex;
+    task.index = arrayIndex + 1;
   });
 };
 
@@ -17,6 +16,13 @@ const remove = (x) => {
   array = array.filter((task) => task.index !== x);
   updateIndex();
   localStorage.setItem('Data', JSON.stringify(array));
+};
+
+const clearCompleted = () => {
+  array = array.filter((task) => !task.completed);
+  updateIndex(array);
+  localStorage.setItem('Data', JSON.stringify(array));
+  window.location.reload();
 };
 
 const showList = () => {
@@ -33,8 +39,6 @@ const showList = () => {
     taskNote.type = 'text';
     taskNote.classList.add('taskNote');
     taskNote.value = task.description;
-    counter = task.index;
-    counter += 1;
 
     const removeBtn = document.createElement('button');
     removeBtn.className = 'removeBtn';
@@ -80,5 +84,5 @@ const showList = () => {
 };
 
 export {
-  showList, editTaskNote, remove, array, counter, updateIndex
+  showList, editTaskNote, remove, array, updateIndex, clearCompleted,
 };

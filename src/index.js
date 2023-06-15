@@ -1,12 +1,11 @@
 import './style.css';
-import { showList, array, counter } from './modules/showList.js';
-import { clearCompleted } from './modules/boolean';
+import { showList, array, clearCompleted } from './modules/showList.js';
 
 const listInput = document.querySelector('#listInput');
 
 const updateArray = () => {
   array.push({
-    index: counter,
+    index: array.length + 1,
     description: listInput.value,
     completed: false,
   });
@@ -17,7 +16,6 @@ listInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' && listInput.value) {
     updateArray(listInput.value);
     listInput.value = '';
-
     showList();
   }
 });
