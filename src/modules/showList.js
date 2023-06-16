@@ -65,7 +65,7 @@ const showList = () => {
       localStorage.setItem('Data', JSON.stringify(array));
     });
 
-    taskNote.addEventListener('keydown', (event) => {
+    taskNote.addEventListener('keypress', (event) => {
       if (event.key === 'Enter' || event.key === 'Escape') {
         event.preventDefault();
         event.target.blur();
