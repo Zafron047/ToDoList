@@ -5,7 +5,6 @@ import { trueStatus, falseStatus } from './boolean.js';
 import updateIndex from './updateIndex.js';
 import remove from './removeItem.js';
 
-
 const array = JSON.parse(localStorage.getItem('Data')) || [];
 
 const list = document.querySelector('#list');

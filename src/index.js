@@ -34,4 +34,4 @@ if (clearAll) {
 
 showList();
 
-export { updateArray };
+export default updateArray;

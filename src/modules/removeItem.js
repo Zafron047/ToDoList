@@ -1,4 +1,4 @@
-import updateIndex from "./updateIndex";
+import updateIndex from './updateIndex.js';
 
 const remove = (x) => {
   let array = JSON.parse(localStorage.getItem('Data')) || [];

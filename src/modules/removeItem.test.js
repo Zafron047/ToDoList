@@ -50,7 +50,7 @@ describe('remove', () => {
     // Verify that the updated array is stored in localStorage
     expect(mockSetItem).toHaveBeenCalledWith(
       'Data',
-      JSON.stringify([{ index: 2, description: 'Task 2', completed: true }])
+      JSON.stringify([{ index: 2, description: 'Task 2', completed: true }]),
     );
 
     // Verify that window.location.reload is called
