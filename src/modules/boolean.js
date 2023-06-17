@@ -5,4 +5,7 @@ const falseStatus = (task) => {
   task.completed = false;
 };
 
-export { trueStatus, falseStatus };
+module.exports = {
+  trueStatus,
+  falseStatus,
+};
