@@ -114,7 +114,7 @@ npx eslint .
 - For unit testing, run:
 
 ```
-npm test
+npm test / npx jest
 ```
 <br>
 ### Deployment:
