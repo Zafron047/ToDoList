@@ -1,5 +1,5 @@
-import clearCompleted from './clearCompleted';
-import updateIndex from './updateIndex';
+import clearCompleted from './clearCompleted.js';
+import updateIndex from './updateIndex.js';
 
 jest.mock('./updateIndex', () => {
   const updateIndexMock = jest.fn();
