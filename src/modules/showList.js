@@ -2,28 +2,13 @@
 
 import editTaskNote from './editTaskNote.js';
 import { trueStatus, falseStatus } from './boolean.js';
+import updateIndex from './updateIndex.js';
+import remove from './removeItem.js';
 
-let array = JSON.parse(localStorage.getItem('Data')) || [];
+
+const array = JSON.parse(localStorage.getItem('Data')) || [];
+
 const list = document.querySelector('#list');
-
-const updateIndex = () => {
-  array.forEach((task, arrayIndex) => {
-    task.index = arrayIndex + 1;
-  });
-};
-
-const remove = (x) => {
-  array = array.filter((task) => task.index !== x);
-  updateIndex();
-  localStorage.setItem('Data', JSON.stringify(array));
-};
-
-const clearCompleted = () => {
-  array = array.filter((task) => !task.completed);
-  updateIndex(array);
-  localStorage.setItem('Data', JSON.stringify(array));
-  window.location.reload();
-};
 
 const showList = () => {
   list.innerHTML = '';
@@ -57,7 +42,6 @@ const showList = () => {
 
     removeBtn.addEventListener('click', () => {
       remove(task.index);
-      showList();
     });
 
     taskNote.addEventListener('input', (event) => {
@@ -65,7 +49,7 @@ const showList = () => {
       localStorage.setItem('Data', JSON.stringify(array));
     });
 
-    taskNote.addEventListener('keypress', (event) => {
+    taskNote.addEventListener('keyup', (event) => {
       if (event.key === 'Enter' || event.key === 'Escape') {
         event.preventDefault();
         event.target.blur();
@@ -84,5 +68,5 @@ const showList = () => {
 };
 
 export {
-  showList, editTaskNote, remove, array, updateIndex, clearCompleted,
+  showList, editTaskNote, array, updateIndex,
 };

@@ -1,28 +1,37 @@
 import './style.css';
-import { showList, array, clearCompleted } from './modules/showList.js';
+import { showList, array } from './modules/showList.js';
+import clearCompleted from './modules/clearCompleted.js';
 
-const listInput = document.querySelector('#listInput');
-
-const updateArray = () => {
+const updateArray = (inputValue) => {
   array.push({
     index: array.length + 1,
-    description: listInput.value,
+    description: inputValue,
     completed: false,
   });
   localStorage.setItem('Data', JSON.stringify(array));
 };
 
-listInput.addEventListener('keydown', (event) => {
+const handleKeyDown = (event) => {
+  const listInput = event.target;
   if (event.key === 'Enter' && listInput.value) {
     updateArray(listInput.value);
     listInput.value = '';
     showList();
   }
-});
+};
+
+const listInput = document.querySelector('#listInput');
+if (listInput) {
+  listInput.addEventListener('keydown', handleKeyDown);
+}
 
 const clearAll = document.querySelector('#clearAll');
-clearAll.addEventListener('click', () => {
-  clearCompleted(array);
-});
+if (clearAll) {
+  clearAll.addEventListener('click', () => {
+    clearCompleted(array);
+  });
+}
 
 showList();
+
+export { updateArray };
